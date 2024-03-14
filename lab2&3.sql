@@ -113,8 +113,21 @@ FROM order_table
 GROUP BY customer_id
 HAVING COUNT(*) > 5;
 
+--alternate query1
+SELECT 
+    customer_id, 
+    COUNT(order_id) AS total_orders -- Counting the number of orders for each customer
+FROM 
+    order_table
+GROUP BY 
+    customer_id -- Grouping the results by customer_id
+HAVING 
+    COUNT(order_id) > 5; -- Filtering out customers with more than 5 orders
+
+
 -- 2. Find the total amount spent by each customer and list them in descending order of total spending
-SELECT customer_id, SUM(total_amount) AS total_spending
+SELECT customer_id, SUM(total_amount) AS total_spending                    
+  
 FROM order_table
 GROUP BY customer_id
 ORDER BY total_spending DESC;
@@ -136,3 +149,16 @@ HAVING SUM(total_amount) > 1000;
 DROP TABLE ORDER_TABLE;
 
 
+                    
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+  
